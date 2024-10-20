@@ -16,7 +16,7 @@ from recommenders.utils.notebook_utils import store_metadata
 print("System version: {}".format(sys.version))
 print("Tensorflow version: {}".format(tf.__version__))
 
-mode = 'train'  # train / eval
+mode = 'eval'  # train / eval
 
 epochs = 5
 seed = 40
@@ -50,14 +50,14 @@ model = LSTURModel(hparams, iterator, seed=seed)
 
 if mode == 'train':
   model.fit(train_news_file, train_behaviors_file, valid_news_file, valid_behaviors_file)
-  model_path = os.path.join("model/LSTUR_MINDsmall")
+  model_path = os.path.join("model/LSTUR_MINDsmall_1")
   os.makedirs(model_path, exist_ok=True)
   model.model.save_weights(os.path.join(model_path, "lstur_ckpt"))
 else:
-  checkpoint_path = os.path.join("model/LSTUR_MINDsmall", "lstur_ckpt")
+  checkpoint_path = os.path.join("model/LSTUR_MINDsmall_1", "lstur_ckpt")
   model.model.load_weights(checkpoint_path)
 
-res_syn = model.run_eval(valid_news_file, valid_behaviors_file)
+res_syn = model.run_eval(test_news_file, test_behaviors_file)
 print(res_syn)
 
 # Record results for tests - ignore this cell

@@ -54,6 +54,11 @@ class MINDIterator(BaseIterator):
         self.word_dict = self.load_dict(hparams.wordDict_file)
         self.uid2index = self.load_dict(hparams.userDict_file)
 
+        idx = 0
+        for key in self.uid2index.keys():
+            self.uid2index[key] = idx
+            idx += 1
+
     def load_dict(self, file_path):
         """load pickle file
 

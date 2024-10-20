@@ -2,6 +2,10 @@
 Copyright (c) Recommenders contributors.
 Licensed under the MIT License.
 -->
+
+出现 cudnn问题，跑：
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
 <img src="https://raw.githubusercontent.com/recommenders-team/artwork/main/color/recommenders_color.svg" width="800">
 
 
